@@ -24,10 +24,10 @@ class Program
                 Console.WriteLine("What is your next guess?");
                  Guess=Console.ReadLine();
                  guess_number = int.Parse(Guess);
-                 guessCount++;
+                 guessCount++; //chat gpt
             }
 
         Console.WriteLine("You guessed it!");
-        Console.WriteLine(guessCount);
+        Console.WriteLine(guessCount);  
     }
 }
