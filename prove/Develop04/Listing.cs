@@ -28,6 +28,8 @@ public class acvListing : acvActivity
     {
         Console.WriteLine("Welcome to the " + acvName + " Activity\n");
         base.startR();
+        base.AcvDuration();
+        Console.WriteLine("Get Ready...\n");  
         base.acv_GetReady();
         acvRun_L();
     }
@@ -49,7 +51,7 @@ public class acvListing : acvActivity
         Console.WriteLine("---" + acvGetRandomQuestion() + "---");
     base.acvMayBegin();
         DateTime acvExerciseTime = DateTime.Now;
-        DateTime acvEndExercise = acvExerciseTime.AddSeconds(base.AcvDuration());
+        DateTime acvEndExercise = acvExerciseTime.AddSeconds(_acvSessionDuration);
         while (DateTime.Now < acvEndExercise)
         {
             if (Console.KeyAvailable)
