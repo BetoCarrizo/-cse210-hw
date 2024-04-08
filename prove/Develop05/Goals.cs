@@ -9,10 +9,14 @@ public abstract class acbGoals
     private static bool _completed;
     private static int _points;
     private static  string _acvInputSimpleDG;
+    public static string _filePath;
     public static List<object> acvGoalss = new List<object>();
     
     
-
+    public string acvSetFileNAme()
+    {
+        return _filePath;
+    }
     public string acvSetNameGoal()
     {
        return _acvNameGoal;
@@ -30,7 +34,10 @@ public abstract class acbGoals
         return _acvInputSimpleDG;
     }
 
-
+    public void acvGetFileName(string acv_filePath)
+    {
+        _filePath =  acv_filePath;
+    }
      public void acvGetNameGoal(string acvNameGoal)
     {
         _acvNameGoal=acvNameGoal;
@@ -47,6 +54,12 @@ public abstract class acbGoals
     public void acvGetDescription(string acvInputSimpleDG)
     {
         _acvInputSimpleDG=acvInputSimpleDG;
+    }
+    public void acvGetFile()
+    {
+        Console.WriteLine("What is the filename for the goal file? ");
+        string acvSetNameGoals=Console.ReadLine();
+        _acvNameGoal=acvSetNameGoals;
     }
 
     public void acvGetNameGoals()
@@ -82,13 +95,12 @@ public abstract class acbGoals
         acvGoalss.Add(_acvNameGoal);
         acvGoalss.Add(_acvInputSimpleDG);
         acvGoalss.Add(_points);
-        acvGoalss.Add (_completed);
+        acvGoalss.Add(_completed);
 
-        
-        foreach (var item in acvGoalss)
-        {
-            Console.WriteLine (string.Join(" | ",acvGoalss));
-        }
+
+        acvSAveLoad saver = new acvSAveLoad();
+
+        saver.acv_Createfile(acvGoalss, _filePath);
     }
 
      public static void Eternal()
@@ -98,21 +110,28 @@ public abstract class acbGoals
         acvGoalss.Add(_acvInputSimpleDG);
         acvGoalss.Add(_points);
 
-        
-        foreach (var item in acvGoalss)
-        {
-            Console.WriteLine (string.Join(" | ",acvGoalss));
-        }
+
+        acvSAveLoad saver = new acvSAveLoad();
+
+        saver.acv_Createfile(acvGoalss, _filePath);
     }
 
-    ///----------------------------------------------------------------------------------------------------
 
-   
+  
+
+
+
+
+
+
+
+    ///----------------------------------------------------------------------------------------------------
 public abstract void acvList();
 public abstract void acvMarkComplete();
 public abstract void acvCalcPoints();
 public abstract void acvGoalName();
 public abstract void acvGetDescrip();
+
 
 
 

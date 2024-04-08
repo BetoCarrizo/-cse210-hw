@@ -20,15 +20,13 @@ class Program
         Console.WriteLine("     2.Eternal Goal");
         Console.WriteLine("     3.Checklist Goal");
         Console.WriteLine("Which type of goal you would like to create? ");    
-
-
-
     }
     static void Main(string[] args)
     {   acvSimpleGoal S =new acvSimpleGoal();
         acvCheckList C = new acvCheckList();
         acvEternalGoal E = new acvEternalGoal();
-
+        acvSAveLoad L = new acvSAveLoad ();
+        acbGoals.acvGoalss  = new List<object>();
         
 
 
@@ -49,9 +47,13 @@ class Program
                 int acvIntGoalOpt = int.Parse(acvGoalOpt);
                 
                 if(acvIntGoalOpt==1)
-                {
+                {   acbGoals acbGoal = new acvSimpleGoal();
+                    acbGoal.acvGoalName(); 
+                    acbGoal.acvGetDescrip(); 
+                    acbGoal.acvGetPoints(); 
+                    acbGoal.acvGetFile();
                     S.runall();
-                    
+                    L.acv_Createfile(acbGoals.acvGoalss, acbGoals._filePath);
                 }
                  if(acvIntGoalOpt==2)
                 {
